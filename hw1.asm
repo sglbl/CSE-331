@@ -5,6 +5,9 @@
 	prompt2: .asciiz "Enter k: "
 	out1: .asciiz "\nn is : "
 	out2: .asciiz ", k is : "
+	
+	array: .space 8
+	
 .text
 
 main:
