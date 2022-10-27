@@ -1,7 +1,7 @@
 .data 
     inputLabel: .asciiz "Enter the amount of integers in the array: "
         myArray: .space 100
-    
+    	
     arrayToBeSorted: .asciiz "Enter the array to be sorted one at a time: "
     nextLine: .asciiz "\n"
     original: .asciiz "You have entered: "
