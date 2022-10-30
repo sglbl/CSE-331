@@ -1,12 +1,13 @@
 # Suleyman Golbol 1801042656
 
 .data 
+
+array: .space 400
 promptN: .asciiz "Enter size of array (n): "
 promptK: .asciiz "Enter k: "
-out1: .asciiz "\nn is : "
-out2: .asciiz ", k is : "
+outN: .asciiz "\nn is : "
+outK: .asciiz ", k is : "
 
-array: .space 24
 newLine: .asciiz "\n"
 arPrint1: .asciiz "ar["
 arPrint2: .asciiz "] + ar["
@@ -25,6 +26,10 @@ endPrint: .asciiz "Total Number of Pairs: "
 
 
 .text
+main:
+	jal takeInputs
+	
+
 	addi $s0, $zero, 1
 	addi $s1, $zero, 3
 	addi $s2, $zero, 2
@@ -32,7 +37,7 @@ endPrint: .asciiz "Total Number of Pairs: "
 	addi $s4, $zero, 1
 	addi $s5, $zero, 2
 	
-	addi $s6, $zero, 3 # k
+	#addi $s6, $zero, 3 # k
 	
 	# Index = $t0
 	addi $t0, $zero, 0 # 0 = first location
@@ -65,7 +70,6 @@ endPrint: .asciiz "Total Number of Pairs: "
  
  		# INNER WHILE LOOP
 		addi $t2, $t1, 4     # start from 4 to 24 by incrementing 4 by 4. (j)
-		
 		while2:
 			
 			bge $t2, 24, exit_loop2
@@ -73,9 +77,7 @@ endPrint: .asciiz "Total Number of Pairs: "
 			lw $t7, array($t2)     # load the array[j] to register t7
 			add $t8, $t6, $t7      # t8 = array[i] + array[j]
 			
-			# blt $t8, $s6, incrementPairCounter # s6 = K number
-			
-			# MAKE DIVISIBLE AND DONE
+			# put remainder of division to $t9
 			rem $t9, $t8, $s6
 			beq $t9, $zero, incrementPairCounter
 			bne $t9, $zero, dontIncrementPairCounter
@@ -108,36 +110,97 @@ endPrint: .asciiz "Total Number of Pairs: "
 		# Halt program
 		li $v0, 10
 		syscall
-		
+	
+takeInputs:
+	# Print text to get n
+	li $v0, 4
+	la $a0, promptN 
+	syscall
+
+        #read # of input (n)
+	li $v0, 5
+	syscall
+	addi $t9, $v0, 0 # move is also okay
+	
+	# Print text to get k
+	li $v0, 4
+	la $a0, promptK
+	syscall
+	
+	# read k 
+	li $v0, 5
+	syscall
+	move $s6, $v0
+	
+	# print "n is "
+	li $v0, 4
+	la $a0, outN
+	syscall	
+	
+	# print integer n
+	li $v0, 1
+	move $a0, $t9
+	syscall	
+	
+	# print "k is "
+	li $v0, 4
+	la $a0, outK
+	syscall	
+	
+	# print integer k
+	li $v0, 1
+	move $a0, $s6
+	syscall
+	
+	# print new line
+	li $v0, 4
+	la $a0, newLine
+	syscall
+
+	jr $ra
+				
 textPrinter: # Function
+	addi $t0, $zero, 4 # Use $t0 as value 4 (to use as index)
+
 	# print str "ar["
 	li $v0, 4
 	la $a0, arPrint1
 	syscall		
+	
 	# print i
-	li $v0, 1          
-	move $a0, $t1
+	li $v0, 1    
+	div $t0, $t1, $t0
+	move $a0, $t0
 	syscall
+	
 	# print str "] + ar["
 	li $v0, 4
 	la $a0, arPrint2
-	syscall		
+	syscall	
+		
+	addi $t0, $zero, 4 # Use $t0 as value 4 (to use as index)
+	
 	# print j
 	li $v0, 1
-	move $a0, $t2
+	div $t0, $t2, $t0
+	move $a0, $t0
 	syscall				
+	
 	# print str "] = "
 	li $v0, 4
 	la $a0, arPrint3
 	syscall		
+	
 	# prints ar[i] + ar[j]
 	li $v0, 1              
 	move $a0, $t8
 	syscall
+	
 	# print new line
 	li $v0, 4
 	la $a0, newLine
 	syscall		
+	
 	# Go back where it left			
 	jr $ra
 	

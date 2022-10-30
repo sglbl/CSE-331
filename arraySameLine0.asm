@@ -1,3 +1,5 @@
+# https://stackoverflow.com/questions/55212566/store-a-user-input-string-of-integers-into-an-integer-array-mips-assembly
+
 .data
 input1: .asciiz "Input Row 1: "
 row1: .asciiz "Row 1: "

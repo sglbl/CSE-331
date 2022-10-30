@@ -2,18 +2,16 @@
 
 int pairFinder(int array[], int size, int k){
 	int counter = 0;
-	int counter2 = 0;
 
 	for(int i = 0; i < size; i++){
 		for(int j = i+1; j < size; j++){
-			counter2++;
 			if(i < j && (array[i] + array[j] ) % k == 0){
 				counter++;
 				printf("(%d, %d) -> ar[%d] + ar[%d] = %d + %d = %d\n", i,j, i,j, array[i], array[j], array[i] + array[j]);
 			}
 		}
 	}
-	printf("c2 is %d\n", counter2);
+
 	return counter;
 }
 
