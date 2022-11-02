@@ -22,7 +22,7 @@ main:
     syscall
     addi $t0, $v0, 0
 
-        #put input into $t0, number of integers in array
+    #put input into $t0, number of integers in array
     
     addi $t7, $t0, 0
     li $t4, 4
@@ -63,7 +63,7 @@ main:
         j while 
 
     while: #printer success
-
+	
         #print new line
         li $v0, 4
         la $a0, nextLine
@@ -149,6 +149,7 @@ print:
     li $v0, 4 
     #loads 4 into #v0
     syscall
+    
     la $a0, nextLine 
     #loads nextLine into $a0
     li $v0, 4 

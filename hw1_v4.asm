@@ -1,0 +1,279 @@
+# Suleyman Golbol 1801042656
+
+.data 
+
+array: .space 100
+promptN:  .asciiz "Enter size of array (n): "
+promptK:  .asciiz "Enter k: "
+promptElement: .asciiz "Enter array elements (seperated by enter): "
+outElement: .asciiz "Array elements are: "
+outN: .asciiz "\nn is : "
+outK: .asciiz ", k is : "
+
+newLine: .asciiz "\n"
+arPrint1: .asciiz "ar["
+arPrint2: .asciiz "] + ar["
+arPrint3: .asciiz "] = " 
+endPrint: .asciiz "Total Number of Pairs: "
+
+#### For a array has size n = 6
+#  s0 = array[0]  |  t0 = iterator on memory adress of $array
+#  s1 = array[1]  |  t1 = i variable
+#  s2 = array[2]  |  t2 = j variable
+#  s3 = array[3]  |  t3 = Total # of pairs
+#  s4 = array[4]  |  t6 = array[i]
+#  s5 = array[5]  |  t7 = array[j]
+#  s6 = k         |  t8 = array[i] + array[j]
+####
+
+
+.text
+main:
+	jal takeNKInputs
+	jal takeArrayInputs
+	
+	addi $s0, $zero, 1
+	addi $s1, $zero, 3
+	addi $s2, $zero, 2
+	addi $s3, $zero, 6
+	addi $s4, $zero, 1
+	addi $s5, $zero, 2
+	
+	#addi $s6, $zero, 3 # k
+	
+	# Index = $t0
+	addi $t0, $zero, 0 # 0 = first location
+	sw $s0, array($t0)
+	
+	addi $t0, $t0, 4  # adding 4 to previous location for next location
+	sw $s1, array($t0)
+
+	addi $t0, $t0, 4  # adding 4 to previous location for next location
+	sw $s2, array($t0)	
+	
+	addi $t0, $t0, 4  # adding 4 to previous location for next location
+	sw $s3, array($t0)	
+	
+	addi $t0, $t0, 4  # adding 4 to previous location for next location
+	sw $s4, array($t0)	
+	
+	addi $t0, $t0, 4  # adding 4 to previous location for next location
+	sw $s5, array($t0)	
+	
+	# int pair_sum = 0
+	addi $t3, $zero, 0 	# Initialize pair counter to 0
+	
+	# OUTER WHILE LOOP
+	addi $t1, $zero, 0	# start from 0 to 24 by incrementing 4 by 4 (int i = 0)
+	while:
+		bge $t1, 24, exit_loop # if $t1 == 24 exit the loop
+		lw $t6, array($t1)     # load the element to the register t6											
+ 
+ 
+ 		# INNER WHILE LOOP
+		addi $t2, $t1, 4     # start from 4 to 24 by incrementing 4 by 4. (j)
+		while2:
+			
+			bge $t2, 24, exit_loop2
+			
+			lw $t7, array($t2)     # load the array[j] to register t7
+			add $t8, $t6, $t7      # t8 = array[i] + array[j]
+			
+			# put remainder of division to $t9
+			rem $t9, $t8, $s6
+			beq $t9, $zero, incrementPairCounter
+			bne $t9, $zero, dontIncrementPairCounter
+			
+			incrementPairCounter:
+				addi $t3, $t3, 1	# pair_sum++
+				jal textPrinter
+								
+			dontIncrementPairCounter:
+				# do nothing
+			
+			addi $t2, $t2, 4 # increment counter of inner loop (j++)
+			j while2
+		exit_loop2:	
+		addi $t1, $t1, 4       # adds 4 every time until 24 (i++)	
+		j while
+	exit_loop:
+		# Print "Total Number of Pairs: "
+		li $v0, 4
+		la $a0, endPrint
+		syscall
+		# prints pair sum
+		li $v0, 1    
+		move $a0, $t3
+		syscall 
+		# print new line
+		li $v0, 4
+		la $a0, newLine
+		syscall	
+		# Halt program
+		li $v0, 10
+		syscall
+	
+	
+takeNKInputs:
+	# Print text to get n
+	li $v0, 4
+	la $a0, promptN 
+	syscall
+
+        #read # of input (n)
+	li $v0, 5
+	syscall
+	addi $t0, $v0, 0 # move is also okay
+	
+	# Print text to get k
+	li $v0, 4
+	la $a0, promptK
+	syscall
+	
+	# read k 
+	li $v0, 5
+	syscall
+	move $s6, $v0
+	
+	# print "n is "
+	li $v0, 4
+	la $a0, outN
+	syscall	
+	
+	# print integer n
+	li $v0, 1
+	move $a0, $t0
+	syscall	
+	
+	# print "k is "
+	li $v0, 4
+	la $a0, outK
+	syscall	
+	
+	# print integer k
+	li $v0, 1
+	move $a0, $s6
+	syscall
+	
+	# print new line
+	li $v0, 4
+	la $a0, newLine
+	syscall
+
+
+takeArrayInputs:
+	# Make t0 = t7 = n
+	addi $t7, $t0, 0
+        li $t4, 4  
+      
+      	# Prompt to get element
+	li $v0, 4
+	la $a0, promptElement
+	syscall
+
+    	#used to index array at insertion       
+	li $t6, 0  
+        
+	j numberReaderLoop
+
+        # get array numbers as input and keep them in list
+	numberReaderLoop:     # for(int $t7 = n;  $t7 != 0;  $t7--)
+
+        	beq $t7, 0, numberReaderLoopExit # if($t7 == 0) break;
+            	
+            	# read integer
+        	li $v0, 5
+        	syscall	
+        	sw $v0, array($t6)      # save input in a list
+        	
+        	addi $t6, $t6, 4	# Index of the list will increment 4 by 4. ($t6 was 0 in the beginning.)
+            	
+        	addi $t7, $t7, -1	# i--
+        	j numberReaderLoop	# continue on loop
+
+	numberReaderLoopExit:
+	
+	addi $t3, $zero, 0	# t3 = 0. Iterator for array
+	
+        move $t0, $t6		# t0 was n. Now it will be 4*index of last element.
+	
+	# Print "Array elements are: "
+	li $v0, 4
+	la $a0, outElement
+        syscall
+        
+	j numberHandlerLoop 	
+	numberHandlerLoop: 		# for(int $t3 = 0; $t3 <= (lastIndexOfArray $t6); $t3 += 4)
+	
+		bge $t3, $t6, halt	# if ($t3 >= $t6) break
+
+        	#print new line
+	        li $v0, 4
+        	la $a0, newLine
+       		syscall 
+        	
+       		lw $t1, array($t3)	# load array's ($t3)^th to t1.
+        
+        	# print array[$t3]
+        	li $v0, 1
+        	add $a0, $zero, $t1 	
+	        syscall
+
+        	addi $t3, $t3, 4	# i++
+
+        	j numberHandlerLoop
+
+	halt:	# Halt program
+	li $v0, 10
+	syscall
+
+	######################
+
+	jr $ra
+				
+textPrinter: # Function
+	addi $t0, $zero, 4 # Use $t0 as value 4 (to use as index)
+
+	# print str "ar["
+	li $v0, 4
+	la $a0, arPrint1
+	syscall		
+	
+	# print i
+	li $v0, 1    
+	div $t0, $t1, $t0
+	move $a0, $t0
+	syscall
+	
+	# print str "] + ar["
+	li $v0, 4
+	la $a0, arPrint2
+	syscall	
+		
+	addi $t0, $zero, 4 # Use $t0 as value 4 (to use as index)
+	
+	# print j
+	li $v0, 1
+	div $t0, $t2, $t0
+	move $a0, $t0
+	syscall				
+	
+	# print str "] = "
+	li $v0, 4
+	la $a0, arPrint3
+	syscall		
+	
+	# prints ar[i] + ar[j]
+	li $v0, 1              
+	move $a0, $t8
+	syscall
+	
+	# print new line
+	li $v0, 4
+	la $a0, newLine
+	syscall		
+	
+	# Go back where it left			
+	jr $ra
+	
+	

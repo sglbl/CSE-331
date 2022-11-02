@@ -11,7 +11,7 @@ array: .space 33
 char: .space 2  
  
 .text 
- 
+
 main: 
  
 li $t9, 1 # counter for prompt 
