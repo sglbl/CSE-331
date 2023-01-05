@@ -1,0 +1,7 @@
+# Miscellaneous
+*.log
+*.v.bak
+**.bak
+.lnk
+.vscode/
+NotMe/
