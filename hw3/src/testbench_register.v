@@ -2,7 +2,7 @@ module testbench_register();
 	reg RegWrite;
 	reg clock;
 	wire [15:0] readed_data1, readed_data2;
-	reg [2:0] read_reg_input1, read_reg_input2, reg_to_write; 
+	reg [3:0] read_reg_input1, read_reg_input2, reg_to_write; 
 	reg [15:0] data_to_write;
 	
 	register myregister(read_reg_input1, read_reg_input2, reg_to_write, 
@@ -40,7 +40,7 @@ module testbench_register();
 		// reading again
 		RegWrite = 1'd0;
 		#12;
-	
+		$finish;
 	end
 	
 	initial begin

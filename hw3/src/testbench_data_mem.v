@@ -13,7 +13,7 @@ module testbench_data_mem();
 	
 	initial begin
 		clock = 1'd0;
-		forever #3 clock = !clock;
+		forever #4 clock = ~clock;
 	end
 
 	initial begin

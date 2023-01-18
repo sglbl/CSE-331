@@ -1,4 +1,4 @@
-module extend6_to_16bits(input [5:0] in, output [15:0] out);
+module extend6_to_16bits(input [5:0] in, output [9:0] out);
 
 	// generation variable to prevent repetition
 	genvar i;
@@ -10,7 +10,7 @@ module extend6_to_16bits(input [5:0] in, output [15:0] out);
 	endgenerate
 
 	generate 
-		for (i=6; i<=15; i = i+1) begin: myorgate2
+		for (i=6; i<=9; i = i+1) begin: myorgate2
 			or (out[i], 0, in[5]);
 		end
 	endgenerate

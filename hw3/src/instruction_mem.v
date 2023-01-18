@@ -1,4 +1,4 @@
-module instruction_mem(input [15:0] address_to_read, output reg [31:0] instruction_to_give);
+module instruction_mem(input [9:0] address_to_read, output reg [31:0] instruction_to_give);
 	reg [31:0] mem [1023:0]; // memory of 1024 32-bit instructions
 	
 	always @(*) begin

@@ -1,4 +1,4 @@
-module alucontrol(input [2:0] aluop, input [2:0] func, output [2:0] aluctr);
+module alucontrol(input [2:0] aluop, input [5:0] func, output [2:0] aluctr);
 	wire aluctr2_and1;
 	wire aluctr2_and2;
 	
@@ -11,11 +11,13 @@ module alucontrol(input [2:0] aluop, input [2:0] func, output [2:0] aluctr);
 	wire aluctr0_and2;
 	wire aluctr0_and3;
 
+	// my func is until 000110 so no need to add first 3 bits
 	wire [2:0] not_of_aluop, not_of_func;
 	
 	// for loop for not operation of opcode
 	genvar i; // generation variable to prevent repetition
 	generate 
+	// my func is until 000110 so no need to change first 3 bits
 		for (i=0; i<=2; i = i+1) begin: mynotgeneration
 			not (not_of_aluop[i], aluop[i]);
 			not (not_of_func[i], func[i]);

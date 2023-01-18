@@ -7,10 +7,10 @@ module next_program_counter(input branch_sig, input [9:0] branch_address, input 
 	end
 	 
 	always @ (posedge clock) begin
-		if(!branch_sig)
-			next_program_counter_var = 10'b0000000100 + next_program_counter_var;
-		else if(branch_sig)
-			next_program_counter_var = branch_address + 10'b0000000100 + next_program_counter_var;
+		if(branch_sig)
+			next_program_counter_var = branch_address + 10'b0000000001 + next_program_counter_var; // adding 4
+		else
+			next_program_counter_var = 10'b0000000001 + next_program_counter_var; // adding 4
 	
 	end
 	

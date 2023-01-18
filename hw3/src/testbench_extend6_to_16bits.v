@@ -1,6 +1,6 @@
 module testbench_extend6_to_16bits();
 	// output
-	wire [15:0] out;
+	wire [9:0] out;
 
 	//input
 	reg [5:0] in;
