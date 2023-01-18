@@ -11,7 +11,7 @@ module alu16 (input [15:0] a, input [15:0] b, input [2:0] ALUop, input reset, in
 
 	adder gatea (a,b, 1'b0, add_wire);
 
-	shiftleft_16bits gateb (a, b, sll_wire);
+	sll gateb (a, b, sll_wire);
 
 	substractor_16bits gatec (a, b, subs_wire);
 
@@ -19,7 +19,7 @@ module alu16 (input [15:0] a, input [15:0] b, input [2:0] ALUop, input reset, in
 
 	slt_16bits gatee (a, b, slt_wire);
 
-	shiftright_16bits gatef (a, b, srl_wire);
+	srl gatef (a, b, srl_wire);
 
 	and_16bits gateg (a,b, and_wire);
 

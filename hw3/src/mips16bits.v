@@ -43,6 +43,7 @@ module mips16bits(input clock);
 	alu16 my_alu(data_to_read1, alu_value2, aluctr, 1'b0, clock, result);
 		
 	/* input MemWrite, input MemRead, input [15:0] address, input [15:0] data_to_write, input clock, output reg [15:0] readed_data);*/
+	// In DataMem use use result of ALUop
 	data_mem my_data_mem(memwrite, memread, result, data_to_read2, clock, readed_data);
 		
 	assign data_to_write = memtoreg ? readed_data : result;

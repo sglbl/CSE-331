@@ -30,6 +30,8 @@ module testbench_mips16bits();
 			m.instruction[31:26], m.instruction[25:22], m.instruction[25:22], m.instruction[21:18], m.instruction[21:18], m.instruction[17:2]);
 		end
 		else begin
+			$writememb("register_end.txt", m.my_register.regs);
+			$writememb("datamem_end.txt",  m.my_data_mem.mem);
 			$finish;
 		end
 		
