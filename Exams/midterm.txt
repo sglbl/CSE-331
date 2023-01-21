@@ -1,0 +1,21 @@
+1a- Mips rules for s and t temporaries.
+
+1b- Convert instruction line to hex (know also address of label using pc counter + offset)
+
+1c- It gives 3 Ghz. Calculate speed of assembly code for single cycle.
+
+1d- It gives every instructions (data memory, logic etc.) cycle count. Calculate CLI.
+
+1e- Find the last value of $s5 (Be careful about when to jump)
+
+2a- Implement 4 bit multiplier using 2 bit adder and 2 bit multiplier
+
+2b- Delay of each is given. Calculate delay of circuit you implemented.
+
+2c- Gates of each given (80 NAND, 20 NAND(or NOR?)). Calculate total for your circuit.
+
+3- A new instruction portakal is given with binary opcode. M[rs] ≤ $rs+$rt+signExt(imm16)
+
+3a- All datapath is given. Create new control signal portakalCtrl without corrupting others.
+
+3b- Draw portakal circuit using only 2 input logic gates and inverters. (Only 1 for portakal opcode)

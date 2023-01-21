@@ -1,0 +1,5 @@
+1- Mips’te $t0’ın hex değeri verilmiş. Srl, ori, xori, lui gibi komutlar sonucunda reg değerleri ne olur?
+
+2- Cache / Memory ile alakalı True False soruları
+
+3- Cache / Virtual memory ile alakalı page table / memory / block size bilgileri verilmiş. AMAP, block size, virtual address hesaplaması yap.

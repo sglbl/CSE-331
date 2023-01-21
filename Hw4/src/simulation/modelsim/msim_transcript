@@ -1,0 +1,67 @@
+# Reading C:/Apparatus/Sdk/modelsim13.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do 1801042656_hw2_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\Apparatus\Sdk\modelsim13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\Apparatus\Sdk\modelsim13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src {C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/cypher_detect.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module cypher_detect
+# 
+# Top level modules:
+# 	cypher_detect
+# vlog -vlog01compat -work work +incdir+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src {C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/datapath.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	datapath
+# vlog -vlog01compat -work work +incdir+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src {C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/control.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module control
+# 
+# Top level modules:
+# 	control
+# 
+vlog -reportprogress 300 -work work C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/datapath.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	datapath
+vlog -reportprogress 300 -work work C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/control.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module control
+# 
+# Top level modules:
+# 	control
+vlog -reportprogress 300 -work work C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/cypher_detect.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module cypher_detect
+# 
+# Top level modules:
+# 	cypher_detect
+vlog -reportprogress 300 -work work C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/datapath.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	datapath
+vlog -reportprogress 300 -work work C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/testbench_control.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module testbench_control
+# 
+# Top level modules:
+# 	testbench_control
+vlog -reportprogress 300 -work work C:/Apparatus/GTU/Year4/CSE331/hw4_bonus/src/testbench_cypher_detect.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module testbench_cypher_detect
+# 
+# Top level modules:
+# 	testbench_cypher_detect

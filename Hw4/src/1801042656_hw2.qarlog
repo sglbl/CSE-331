@@ -1,0 +1,21 @@
+Quartus II Archive log --	C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/1801042656_hw2.qarlog
+
+Archive:	C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/1801042656_hw2.qar
+Date:		Mon Jan 09 23:36:45 2023
+Quartus II 64-Bit		13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/1801042656_hw2.qpf
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/1801042656_hw2.qsf
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/assignment_defaults.qdf
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/control.v
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/cypher_detect.v
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/datapath.v
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/db/1801042656_hw2.db_info
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/incremental_db/compiled_partitions/1801042656_hw2.db_info
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/testbench_control.v
+C:/Apparatus/GTU/Year4/CSE331/hw4_bonus - Copy/src/testbench_cypher_detect.v
+	======= Total: 10 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
