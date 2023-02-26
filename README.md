@@ -1,5 +1,5 @@
-# CSE-331
-CSE-331 Computer Organization in Mips Assembly and Verilog
+# CSE-331 Computer Organization in Mips Assembly / Verilog
+Assignments of Computer Organization
 
 ### [Homework1](https://github.com/sglbl/CSE-331/tree/master/Hw1)
 Taking input on MIPS Assembly Language and Performing Operations Based on Numbers
