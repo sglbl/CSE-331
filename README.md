@@ -11,4 +11,4 @@ Implementation of 64-bit Multiplication and ALU on Verilog Hardware Description 
 Implementation of 16-bit CPU on Verilog Hardware Description Language
 
 ### [Homework4](https://github.com/sglbl/CSE-331/tree/master/Hw4)
-- Partial Implementation of Value Counter Using Control Unit and Datapath
+Partial Implementation of Value Counter Using Control Unit and Datapath
